@@ -670,3 +670,35 @@ document.querySelectorAll('[data-bs-toggle="tab"]').forEach((tab) => {
 Although Bootstrap does not need jQuery anymore, it is still possible to use it in Moodle. See MDL-84324 for more information.
 
 :::
+
+## BS4 backwards-compatibility layer
+
+The migration from Bootstrap 4 to Bootstrap 5 involves a transition period to allow third-party plugins to update gradually.
+To facilitate this, a backwards-compatibility layer has been created, ensuring that some Bootstrap 4 syntax will continue to function until final deprecation in Moodle 6.0.
+This approach aims to provide developers with sufficient time to adapt their code to the new Bootstrap 5 framework.
+
+The BS4 backwards-compatibility layer encompasses three crucial aspects to facilitate a smooth transition for third-party contributions:
+
+1. **Bootstrap jQuery support**: This allows existing plugins and components that rely on jQuery to continue functioning while developers work on updating their code to the new vanilla JavaScript approach.
+2. **SCSS helpers and utilities**: The compatibility layer includes some SCSS helpers and utilities from Bootstrap 4, enabling developers to gradually adapt their custom styles to the new Bootstrap 5.
+3. **Bootstrap 4 old data attributes syntax silent replacement**: This feature quietly replaces the old Bootstrap 4 data attribute syntax with the new Bootstrap 5 syntax, ensuring that existing markup continues to work without immediate changes.
+
+### SCSS helpers and utilities
+
+<Since version="5.0" issueNumber="MDL-80519" />
+
+The compatibility layer includes a selection of SCSS helpers and utilities from Bootstrap 4.
+This provision enables developers to continue using familiar class names and mixins while they work on updating their custom styles to align with Bootstrap 5's new utility API system and class structure.
+
+Some of the SCSS helpers and utilities available in the backwards-compatibility layer include:
+
+- `.media` component
+- Coloured badges using `.badge-success`, `badge-warning`, ... classes
+- Inline forms using `.form-inline` class
+- Spacing utilities like `.mr-1`, `.pl-2`, ...
+- `.sr-only` and `.sr-only-focusable` classes
+- Font utilities like `.font-weight-bold`, `.font-italic`, ...
+- Custom controls in forms using `.custom-radio`, `.custom-switch`, ...
+
+All these backwards-compatible SCSS helpers and utilities will be available until the final deprecation in Moodle 6.0.
+More details about the SCSS deprecation process can be found in [SCSS deprecation](/general/development/policies/deprecation/scss-deprecation).
