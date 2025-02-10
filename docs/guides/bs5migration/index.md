@@ -670,3 +670,32 @@ document.querySelectorAll('[data-bs-toggle="tab"]').forEach((tab) => {
 Although Bootstrap does not need jQuery anymore, it is still possible to use it in Moodle. See MDL-84324 for more information.
 
 :::
+
+## BS4 backwards-compatibility layer
+
+The migration from Bootstrap 4 to Bootstrap 5 involves a transition period to allow third-party plugins to update gradually.
+To facilitate this, a backwards-compatibility layer has been created, ensuring that some Bootstrap 4 syntax will continue to function until final deprecation in Moodle 6.0.
+This approach aims to provide developers with sufficient time to adapt their code to the new Bootstrap 5 framework.
+
+The BS4 backwards-compatibility layer encompasses three crucial aspects to facilitate a smooth transition for third-party contributions:
+
+1. **Bootstrap jQuery support**: This allows existing plugins and components that rely on jQuery to continue functioning while developers work on updating their code to the new vanilla JavaScript approach.
+2. **SCSS helpers and utilities**: The compatibility layer includes some SCSS helpers and utilities from Bootstrap 4, enabling developers to gradually adapt their custom styles to the new Bootstrap 5.
+3. **Bootstrap 4 old data attributes syntax silent replacement**: This feature quietly replaces the old Bootstrap 4 data attribute syntax with the new Bootstrap 5 syntax, ensuring that existing markup continues to work without immediate changes.
+
+### Bootstrap 4 old data attributes syntax silent replacement
+
+<Since version="5.0" issueNumber="MDL-84450" />
+
+To minimize immediate breaking changes, the backwards-compatibility layer implements a silent replacement mechanism for Bootstrap 4's data attribute syntax.
+
+As per Bootstrap's migration guide "*Data attributes for all JavaScript plugins are now namespaced to help distinguish Bootstrap functionality from third parties and your own code. For example, we use `data-bs-toggle` instead of `data-toggle`.*"
+
+This feature automatically translates old data attributes to their Bootstrap 5 equivalents, allowing existing markup to function without requiring immediate updates.
+This will replace for example `data-toggle="tooltip"` with `data-bs-toggle="tooltip"`, or `data-target="#collapsableContent"` with `data-bs-target="#collapsableContent"`.
+
+:::warning
+
+Dynamic generated content containing old data attributes syntax will not be replaced.
+
+:::
