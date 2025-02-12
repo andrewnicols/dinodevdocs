@@ -73,14 +73,6 @@ Sensitive content is not persisted to the database and is therefore not availabl
 
 :::
 
-:::info Availability of asynchronous message handling
-
-The ability to send messages asynchronously has not yet been implemented. The parameter is included for future compatibility.
-
-See MDL-81015 for more information on this feature.
-
-:::
-
 ## Fetching messages
 
 Every sent message is stored in the database to support status checks, and for subsequent reporting.
